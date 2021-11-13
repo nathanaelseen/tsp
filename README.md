@@ -35,8 +35,13 @@ Submitting this code (``tsp.cpp``) verbatim gets you around 48/50 and (likely) a
 Generally, it's quite hard to beat this record or even improve from here. But my goal is to get as close to 50 as possible (or even 50), for this problem on Kattis! Anyone wants to join me in my quest?!
 
 ## Developement and Set-up
-Well, if you're interested to set-up this project locally, here are the steps:
+To set-up this project locally, here are the steps:
 1. Clone the repository
-2. Ensure you have C++ compiler installed, depending on your C++ compiler/flags, you may need to modify `score.py` to use the correct compiler.
+2. Ensure you have C++ compiler installed, depending on your C++ compiler/flags, you may need to modify `GCC_ARGS` under `score.py` to use the correct compiler. For instance, since I'm using `g++-11` compiler I just put that compiler as the first item in the list.
 3. Ensure you have Python3 installed.
-4. Run `python3 score.py tsp.cpp`, and this will compile `tsp.cpp` and run the solver against our carefully curated test cases (under the `/tests` folder), and score it similar to Kattis (i.e, upon 50).
+4. Run `python3 score.py tsp.cpp`, and this will compile `tsp.cpp` and run the solver against our carefully curated test cases under the `/tests` folder (most of them are from [TSPLib](http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/) and the rest are [VSLI](https://www.math.uwaterloo.ca/tsp/vlsi/index.html) and [national city](https://www.math.uwaterloo.ca/tsp/world/countries.html) test cases from the University of Waterloo), and score it similar to Kattis (i.e, upon 50).
+
+Assuming you have set-up everything correctly, you should be able to see something like this;
+<img width="1122" alt="Screenshot 2021-11-13 at 2 27 13 PM" src="https://user-images.githubusercontent.com/12388525/141608600-177541c2-c664-4404-9a49-4607a7efd8af.png">
+
+On average, you would receive a score of around 47.5/50, which is consistently slightly lower than Kattis' test cases of 48/50.
