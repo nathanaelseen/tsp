@@ -10,7 +10,7 @@ As of current development, the solver has reached state-of-the-art (SOTA) perfor
 <img width="1084" alt="Screenshot 2021-11-13 at 12 09 36 PM" src="https://user-images.githubusercontent.com/12388525/141605159-1de1403a-f24d-4203-9979-c64e1ca11ae9.png">
 
 ## Overview of TSP
-TSP is an NP-hard problem, and for large number of vertices N, e.g; N = 1000, it near impossible to solve it via systematic search techniques such as brute-force, dynamic programming, as they incur exponential (non-polynomial) if not worst time-complexity.
+TSP is an NP-hard problem, and for large number of vertices N, e.g; N = 1000, it near impossible to solve it via systematic search techniques such as brute-force, dynamic programming, as they incur exponential (non-polynomial) if not worse time-complexity.
 
 To solve TSP for large graphs efficiently, we could use approximation algorithms such as [Christofides algorithm](https://en.wikipedia.org/wiki/Christofides_algorithm). The performance of these algorithms are easy to analyse however the problem is that they can provide solutions 100% off from the optimal tour.
 
