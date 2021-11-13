@@ -33,3 +33,10 @@ The world record for this problem is currently at 48.81/50.
 Submitting this code (``tsp.cpp``) verbatim gets you around 48/50 and (likely) also places you in the top 10 for this problem (I'm currently number 3!).
 
 Generally, it's quite hard to beat this record or even improve from here. But my goal is to get as close to 50 as possible (or even 50), for this problem on Kattis! Anyone wants to join me in my quest?!
+
+## Developement and Set-up
+Well, if you're interested to set-up this project locally, here are the steps:
+1. Clone the repository
+2. Ensure you have C++ compiler installed, depending on your C++ compiler/flags, you may need to modify `score.py` to use the correct compiler.
+3. Ensure you have Python3 installed.
+4. Run `python3 score.py tsp.cpp`, and this will compile `tsp.cpp` and run the solver against our carefully curated test cases (under the `/tests` folder), and score it similar to Kattis (i.e, upon 50).
