@@ -30,6 +30,6 @@ Finally, our acceptance criteria is simply to accept tours with equal or better 
 The world record for this problem is currently at 48.81/50.
 <img width="1120" alt="Screenshot 2021-11-13 at 1 53 04 PM" src="https://user-images.githubusercontent.com/12388525/141607626-17b5962e-58c4-4199-ab61-6d9ce576e661.png">
 
-Submitting this code (``tsp.cpp``) verbatim gets you around 48/50 and (likely) places you in the top 10 for this problem (I'm currently number 3!).
+Submitting this code (``tsp.cpp``) verbatim gets you around 48/50 and (likely) also places you in the top 10 for this problem (I'm currently number 3!).
 
 Generally, it's quite hard to beat this record or even improve from here. But my goal is to get as close to 50 as possible (or even 50), for this problem on Kattis! Anyone wants to join me in my quest?!
