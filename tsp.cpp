@@ -20,7 +20,6 @@
 
 using namespace std;
 
-typedef uint_fast64_t ll;
 typedef pair<double, double> dd;
 typedef vector<dd> vdd;
 typedef vector<uint_fast16_t> vi;
@@ -45,31 +44,31 @@ mt19937 gen(rd());
 template<typename T>
 class Matrix {
 public:
-    Matrix(std::size_t N, std::size_t M) :
+    Matrix(std::uint_fast16_t N, std::uint_fast16_t M) :
         m_data(N * M, T()),
         m_rows(N),
         m_cols(M) {}
 
-    inline T* operator[](int i) {
+    inline T* operator[](uint_fast16_t i) {
         return &m_data[i * m_cols];
     }
 
-    inline T const* operator[](int i) const {
+    inline T const* operator[](uint_fast16_t i) const {
         return &m_data[i * m_cols];
     }
 
-    inline std::size_t getNumRows() const {
+    inline uint_fast16_t getNumRows() const {
         return m_rows;
     }
 
-    inline std::size_t getNumCols() const {
+    inline uint_fast16_t getNumCols() const {
         return m_cols;
     }
 
 private:
-    std::vector<T> m_data;
-    std::size_t m_rows;
-    std::size_t m_cols;
+    vector<T> m_data;
+    uint_fast16_t m_rows;
+    uint_fast16_t m_cols;
 };
 
 typedef Matrix<uint_fast16_t> mi16;
@@ -80,10 +79,19 @@ static inline chrono::time_point<chrono::high_resolution_clock> now() {
     return chrono::high_resolution_clock::now();
 }
 
+// Performs fast modulus operation.
+uint_fast16_t fast_mod(const uint_fast16_t input, const uint_fast16_t ceil) {
+    // apply the modulo operator only when needed
+    // (i.e. when the input is greater than the ceiling)
+    return input >= ceil ? input % ceil : input;
+    // NB: the assumption here is that the numbers are positive
+}
+
+
 // Fills up the distance matrix as per the problem specs as euclidean distance
 // rounded to the nearest integer. Takes `n` number of 2D `coords` as input.
 mi32 create_dist_matrix(istream& cin) {
-    size_t n; cin >> n;
+    uint_fast16_t n; cin >> n;
 
     vd x(n);
     vd y(n);
@@ -142,39 +150,39 @@ mi16 create_neighbour_matrix(const mi32& dist, uint_fast16_t k) {
 }
 
 // Computes the cost of a given tour, takes O(n)
-inline ll compute_cost(const vi& tour, const mi32& dist) {
-    size_t n = tour.size();
+inline uint_fast32_t compute_cost(const vi& tour, const mi32& dist) {
+    uint_fast16_t n = tour.size();
 
-    ll cost = 0;
+    uint_fast32_t cost = 0;
     for (uint_fast16_t i = 0, j = 1; i < n; ++i, ++j) {
-        cost += dist[tour[i]][tour[j % n]];
+        cost = cost + dist[tour[i]][tour[fast_mod(j, n)]];
     }
 
     return cost;
 }
 
 inline void swap_adj_seg(vi& tour, uint_fast16_t* position, uint_fast16_t A, uint_fast16_t B, uint_fast16_t C, uint_fast16_t D) {
-    size_t n = tour.size();
+    uint_fast16_t n = tour.size();
 
     vi temp;
 
     uint_fast16_t cur = C;
     while (cur != D) {
         temp.push_back(tour[cur]);
-        cur = (cur + 1) % n;
+        cur = fast_mod(cur + 1, n);
     }
     temp.push_back(tour[cur]); // temp contains segment [C .. D]
 
     cur = A;
     while (cur != B) {
         temp.push_back(tour[cur]);
-        cur = (cur + 1) % n;
+        cur = fast_mod(cur + 1, n);
     }
     temp.push_back(tour[cur]); // temp contains segment [C .. D, A .. B]
 
     for (uint_fast16_t i = 0; i < temp.size(); ++i) { // copy over to tour
-        tour[(A + i) % n] = temp[i];
-        position[temp[i]] = (A + i) % n;
+        tour[fast_mod(A + i, n)] = temp[i];
+        position[temp[i]] = fast_mod(A + i, n);
     }
 }
 
@@ -188,7 +196,7 @@ void print_tour(const vi& tour) {
 // Gives a 2-approximate solution to TSP based on the greedy nearest neighbour
 // approach. Used as the starting point for local search.
 vi naive_algo(const mi32& dist) {
-    size_t n = dist.getNumRows();
+    uint_fast16_t n = dist.getNumRows();
 
     bool used[n];
     for (uint_fast16_t i = 0; i < n; ++i) {
@@ -199,9 +207,11 @@ vi naive_algo(const mi32& dist) {
     tour[0] = 0;
     used[0] = true;
 
+    uint_fast16_t j;
+
     for (uint_fast16_t i = 1; i < n; ++i) {
         int best = -1;
-        for (uint_fast16_t j = 0; j < n; ++j) {
+        for (j = 0; j < n; ++j) {
             if (!used[j] && (best == -1 || dist[tour[i-1]][j] < dist[tour[i-1]][best])) {
                 best = j;
             }
@@ -215,7 +225,7 @@ vi naive_algo(const mi32& dist) {
 
 // Copied reverse method from: https://github.com/estan/tsp/blob/master/tsp.cpp
 inline void reverse_tour(vi& tour, uint_fast16_t start, uint_fast16_t end, uint_fast16_t* position) {
-    size_t n = tour.size();
+    uint_fast16_t n = tour.size();
 
     uint_fast16_t numSwaps = (((start <= end ? end - start : (end + n) - start) + 1) / 2);
     uint_fast16_t i = start;
@@ -226,8 +236,8 @@ inline void reverse_tour(vi& tour, uint_fast16_t start, uint_fast16_t end, uint_
         position[tour[i]] = i;
         position[tour[j]] = j;
 
-        i = (i + 1) % n;
-        j = ((j + n) - 1) % n;
+        i = fast_mod(i + 1, n);
+        j = fast_mod((j + n) - 1, n);
     }
 }
 
@@ -235,7 +245,7 @@ inline void reverse_tour(vi& tour, uint_fast16_t start, uint_fast16_t end, uint_
 // This randomly selects a subtour and shuffles it
 // modifies tour in place
 inline void shuffle_tour(vi& tour) {
-    size_t n = tour.size();
+    uint_fast16_t n = tour.size();
 
     if (n <= GEO_SHUFFLE_WIDTH) {
         shuffle(tour.begin(), tour.end(), rd);
@@ -250,7 +260,7 @@ inline void shuffle_tour(vi& tour) {
 
 // Performs a double bridge perturbation on the tour
 inline vi double_bridge(vi& tour) {
-    size_t n = tour.size();
+    uint_fast16_t n = tour.size();
 
     vi newTour;
     newTour.reserve(n);
@@ -280,6 +290,7 @@ inline void two_opt(vi& tour, const mi32& dist, const mi16& neighbour, uint_fast
 
     uint_fast16_t u1, u2, u3, u4;
     uint_fast16_t u1Idx, u2Idx, u3Idx, u4Idx;
+    uint_fast16_t k;
 
     bool improvingTSP = true; // Exit when no improving neighbours
 
@@ -292,17 +303,17 @@ inline void two_opt(vi& tour, const mi32& dist, const mi16& neighbour, uint_fast
 
         for (u1Idx = 0; u1Idx < n; ++u1Idx) {
             u1 = tour[u1Idx];
-            u2Idx = (u1Idx + 1) % n;
+            u2Idx = fast_mod(u1Idx + 1, n);
             u2 = tour[u2Idx];
 
-            for (uint_fast16_t k = 0; k < neighbour.getNumCols(); ++k) {
+            for (k = 0; k < neighbour.getNumCols(); ++k) {
                 u3Idx = position[neighbour[u1][k]];
                 u3 = tour[u3Idx];
 
                 // All subsequent neighbours of u1 guaranteed to have longer distances
                 if (dist[u1][u3] >= dist[u1][u2]) break;
 
-                u4Idx = (u3Idx + 1) % n;
+                u4Idx = fast_mod(u3Idx + 1, n);
                 u4 = tour[u4Idx];
 
                 if (u1 == u4 || u2 == u3) continue;
@@ -327,6 +338,7 @@ inline void three_opt(vi& tour, const mi32& dist, const mi16& neighbour, uint_fa
 
     uint_fast16_t u1, u2, u3, u4, u5, u6;
     uint_fast16_t u1Idx, u2Idx, u3Idx, u4Idx, u5Idx, u6Idx;
+    uint_fast16_t k1, k2;
     bool improvingTSP = true; // Exit when no improving neighbours
 
     int d0, d1, d2;
@@ -340,10 +352,10 @@ inline void three_opt(vi& tour, const mi32& dist, const mi16& neighbour, uint_fa
 
         for (u1Idx = 0; u1Idx < n; ++u1Idx) {
             u1 = tour[u1Idx];
-            u2Idx = (u1Idx + 1) % n;
+            u2Idx = fast_mod(u1Idx + 1, n);
             u2 = tour[u2Idx];
 
-            for (uint_fast16_t k1 = 0; k1 < neighbour.getNumCols(); ++k1) {
+            for (k1 = 0; k1 < neighbour.getNumCols(); ++k1) {
                 u3 = neighbour[u2][k1];
                 u3Idx = position[u3];
 
@@ -354,11 +366,11 @@ inline void three_opt(vi& tour, const mi32& dist, const mi16& neighbour, uint_fa
 
                 if (u3 == u1) continue;
 
-                u4Idx = (u3Idx + 1) % n;
+                u4Idx = fast_mod(u3Idx + 1, n);
                 u4 = tour[u4Idx];
 
                 if (u4Idx != u1Idx) {
-                    for (uint_fast16_t k2 = 0; k2 < neighbour.getNumCols(); ++k2) {
+                    for (k2 = 0; k2 < neighbour.getNumCols(); ++k2) {
                         u5 = neighbour[u4][k2];
                         u5Idx = position[u5];
 
@@ -373,7 +385,7 @@ inline void three_opt(vi& tour, const mi32& dist, const mi16& neighbour, uint_fa
                         // All subsequent neighbours of guaranteed to have longer distances
                         if (d1 >= 0) break;
 
-                        u6Idx = (u5Idx + 1) % n;
+                        u6Idx = fast_mod(u5Idx + 1, n);
                         u6 = tour[u6Idx];
 
                         d2 = d1 + dist[u1][u6] - dist[u5][u6];
@@ -388,11 +400,11 @@ inline void three_opt(vi& tour, const mi32& dist, const mi16& neighbour, uint_fa
                     }
                 }
 
-                u4Idx = ((u3Idx - 1) + n) % n;
+                u4Idx = fast_mod(u3Idx - 1 + n, n);
                 u4 = tour[u4Idx];
 
                 if (u4Idx != u1Idx) {
-                    for (uint_fast16_t k2 = 0; k2 < neighbour.getNumCols(); ++k2) {
+                    for (k2 = 0; k2 < neighbour.getNumCols(); ++k2) {
                         u5 = neighbour[u4][k2];
                         u5Idx = position[u5];
 
@@ -407,7 +419,7 @@ inline void three_opt(vi& tour, const mi32& dist, const mi16& neighbour, uint_fa
                         // All subsequent neighbours of guaranteed to have longer distances
                         if (d1 >= 0) break;
 
-                        u6Idx = (u5Idx + 1) % n;
+                        u6Idx = fast_mod(u5Idx + 1, n);
                         u6 = tour[u6Idx];
 
                         d2 = d1 + dist[u1][u6] - dist[u5][u6];
@@ -433,7 +445,16 @@ template<typename T>
 vi local_search(mi32& dist, const chrono::time_point<T>& deadline) {
     uint_fast16_t n = dist.getNumRows();
 
-    const mi16 neighbour = create_neighbour_matrix(dist, NEIGH_LIMIT);
+    uint_fast16_t k;
+
+    if (n <= 200) {
+        k = 60;
+    } else if (n <= 600) {
+        k = 25;
+    } else {
+        k = 20; 
+    }
+    const mi16 neighbour = create_neighbour_matrix(dist, k);
 
     /*
      * Start of with the greedy solution (in problem specs), then improve from there via
@@ -442,24 +463,27 @@ vi local_search(mi32& dist, const chrono::time_point<T>& deadline) {
     vi tour = naive_algo(dist);
 
     // Compute cost for this tour, takes O(n)
-    ll cost = compute_cost(tour, dist);
+    uint_fast32_t cost = compute_cost(tour, dist);
 
     // Perform 2-opt and 3 -top on tour
     vi bestTour = tour;
-    ll bestCost = cost;
+    uint_fast32_t bestCost = cost;
 
     //cout << "bestCost = " << bestCost << "\n";
 
     // Find finding our first local maxima, hope we get a pretty good one
     uint_fast16_t* position = new uint_fast16_t[n];
 
-    uniform_int_distribution<size_t> randomOffset(1, 100); // [a, b] Inclusive
+    uniform_int_distribution<uint_fast16_t> randomOffset(1, 100); // [a, b] Inclusive
 
     chrono::milliseconds threeOptBuffer(THREE_OPT_BUFFER_TIME);
 
+    uint_fast16_t i;
+    uint_fast16_t A;
+
     // Diversification
     while (now() + threeOptBuffer < deadline) {
-        size_t A = randomOffset(gen);
+        A = randomOffset(gen);
         if (A <= SHUFFLE_PROBABILITY) {
             shuffle_tour(tour);
         } else {
@@ -467,7 +491,7 @@ vi local_search(mi32& dist, const chrono::time_point<T>& deadline) {
         }
 
         // Next, perform subsidiary local search
-        for (uint_fast16_t i = 0; i < n; ++i) {
+        for (i = 0; i < n; ++i) {
             position[tour[i]] = i;
         }
 
