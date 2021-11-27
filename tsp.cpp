@@ -46,7 +46,6 @@ mt19937 gen(rd());
 
 void fill_up_dist_matrix(uint_fast16_t n, const vdd& coords);
 void fill_up_nearest_neighbour_matrix(uint_fast16_t n);
-vi solve_dp_bitmask(uint_fast16_t n);
 vi local_search(uint_fast16_t n, const clock_t& clock_begin);
 void naive_algo(uint_fast16_t n, vi& tour);
 void print_tour(const vi& tour);
@@ -74,12 +73,7 @@ int main() {
     fill_up_nearest_neighbour_matrix(n);
 
     // Solve it
-    vi tour;
-    if (n <= DP_LIMIT) {
-        tour = solve_dp_bitmask(n);
-    } else {
-        tour = local_search(n, clock_begin);
-    }
+    vi tour = local_search(n, clock_begin);
 
     // Print the best tour
     print_tour(tour);
