@@ -216,6 +216,14 @@ vi double_bridge_move(uint_fast16_t n, vi& tour) {
     vi newTour;
     newTour.reserve(n);
 
+    if (n < 8) {
+        newTour = tour;
+
+        shuffle(newTour.begin(), newTour.end(), rd);
+
+        return newTour;
+    }
+
     uniform_int_distribution<uint_fast16_t> randomOffset(1, n / 4);
     uint_fast16_t A = randomOffset(rd);
     uint_fast16_t B = A + randomOffset(rd);
