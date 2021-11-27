@@ -3,7 +3,7 @@ Copyright: MIT License Soeren Hougaard Mulvad <shmulvad@gmail.com> 2021
 This program tests and scores your solutions for the various problems you have
 in your test data.
 You need to install requirements beforehand:
-$ pip install click
+$ pip install click sty
 The program can be run by executing this file. E.g.
 $ python score.py --help  # See how to run
 $ python score.py --program=tsp.cpp --problem-type=tsp --test-glob='./tests/*.txt' --timeout=5 -j 4 -max 50
@@ -32,6 +32,8 @@ from tempfile import TemporaryFile
 from typing import List, Optional, Tuple, Union
 
 import click
+from sty import fg
+fg.pink = fg(201)
 
 MAX_LOG_BYTES = 1024 * 1024 * 10  # 10 MB
 MAX_ERROR_OUTPUT = 100
@@ -47,14 +49,6 @@ GCC_ARGS = ['g++', '-std=c++17']  # The gcc compiler args for cpp programs
 PYTHON = sys.executable  # The Python interpreter for running Python programs
 
 INF = float('inf')
-
-
-class bcolors:
-    GREEN = '\033[92m'
-    YELLOW = '\033[93m'
-    VIOLET = '\033[95m'
-    RED = '\033[91m'
-    RESET = '\033[0m'
 
 
 def get_logger():
@@ -125,18 +119,18 @@ class TestVerdict:
         leading part to a maximum width of `max_width` if needed
         """
         if self.ok and self.score >= 0.999:
-            color = bcolors.GREEN
+            color = fg.green
         elif self.ok and self.score >= 0.8:
-            color = bcolors.YELLOW
+            color = fg.yellow
         elif self.ok:
-            color = bcolors.VIOLET
+            color = fg.pink
         else:
-            color = bcolors.RED
+            color = fg.red
 
         msg = (f'[ok] - {self.score:.3f}'
                if self.ok
                else f'[failed] {self.err_msg}')
-        return f'{self.in_file.ljust(max_width)} {color}{msg}{bcolors.RESET}'
+        return f'{self.in_file.ljust(max_width)} {color}{msg}{fg.rs}'
 
 
 class ProblemChecker(ABC):
