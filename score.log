@@ -398,3 +398,101 @@ Tests passed (score):
     ----------------
     41/41 (46.61/50)
     ----------------
+2021-11-27 16:17:20,581 - INFO - Testing tsp.cpp
+2021-11-27 16:17:20,582 - DEBUG - Compiling tsp.cpp...
+2021-11-27 16:17:26,246 - INFO - tsp ./tests/19_rnd_0.txt [92m[ok] - 1.000[0m
+2021-11-27 16:17:26,247 - INFO - tsp ./tests/19_rnd_1.txt [92m[ok] - 1.000[0m
+2021-11-27 16:17:26,248 - INFO - tsp ./tests/19_rnd_2.txt [92m[ok] - 1.000[0m
+2021-11-27 16:17:26,248 - INFO - tsp ./tests/bcl380.txt   [93m[ok] - 0.846[0m
+2021-11-27 16:17:27,721 - INFO - tsp ./tests/berlin52.txt [92m[ok] - 1.000[0m
+2021-11-27 16:17:28,682 - INFO - tsp ./tests/bier127.txt  [92m[ok] - 1.000[0m
+2021-11-27 16:17:28,707 - INFO - tsp ./tests/ch130.txt    [92m[ok] - 1.000[0m
+2021-11-27 16:17:28,809 - INFO - tsp ./tests/ch150.txt    [92m[ok] - 1.000[0m
+2021-11-27 16:17:29,911 - INFO - tsp ./tests/d1291.txt    [95m[ok] - 0.654[0m
+2021-11-27 16:17:31,040 - INFO - tsp ./tests/d198.txt     [93m[ok] - 0.984[0m
+2021-11-27 16:17:31,040 - INFO - tsp ./tests/d493.txt     [95m[ok] - 0.774[0m
+2021-11-27 16:17:31,084 - INFO - tsp ./tests/d657.txt     [93m[ok] - 0.897[0m
+2021-11-27 16:17:32,399 - INFO - tsp ./tests/dsj1000.txt  [95m[ok] - 0.781[0m
+2021-11-27 16:17:33,441 - INFO - tsp ./tests/eil101.txt   [92m[ok] - 1.000[0m
+2021-11-27 16:17:33,447 - INFO - tsp ./tests/eil51.txt    [92m[ok] - 1.000[0m
+2021-11-27 16:17:33,493 - INFO - tsp ./tests/eil76.txt    [92m[ok] - 1.000[0m
+2021-11-27 16:17:34,866 - INFO - tsp ./tests/fl417.txt    [93m[ok] - 0.984[0m
+2021-11-27 16:17:35,701 - INFO - tsp ./tests/lin105.txt   [92m[ok] - 1.000[0m
+2021-11-27 16:17:35,701 - INFO - tsp ./tests/lin318.txt   [93m[ok] - 0.908[0m
+2021-11-27 16:17:35,718 - INFO - tsp ./tests/lu980.txt    [93m[ok] - 0.821[0m
+2021-11-27 16:17:36,995 - INFO - tsp ./tests/pcb1173.txt  [95m[ok] - 0.654[0m
+2021-11-27 16:17:37,779 - INFO - tsp ./tests/pcb442.txt   [93m[ok] - 0.886[0m
+2021-11-27 16:17:37,779 - INFO - tsp ./tests/pr107.txt    [92m[ok] - 1.000[0m
+2021-11-27 16:17:37,826 - INFO - tsp ./tests/pr124.txt    [92m[ok] - 1.000[0m
+2021-11-27 16:17:39,117 - INFO - tsp ./tests/pr136.txt    [93m[ok] - 0.999[0m
+2021-11-27 16:17:39,874 - INFO - tsp ./tests/pr144.txt    [92m[ok] - 1.000[0m
+2021-11-27 16:17:39,890 - INFO - tsp ./tests/pr152.txt    [92m[ok] - 1.000[0m
+2021-11-27 16:17:39,936 - INFO - tsp ./tests/pr226.txt    [92m[ok] - 1.000[0m
+2021-11-27 16:17:41,187 - INFO - tsp ./tests/pr264.txt    [92m[ok] - 1.000[0m
+2021-11-27 16:17:41,940 - INFO - tsp ./tests/pr299.txt    [93m[ok] - 0.971[0m
+2021-11-27 16:17:41,957 - INFO - tsp ./tests/pr439.txt    [93m[ok] - 0.931[0m
+2021-11-27 16:17:41,997 - INFO - tsp ./tests/pr76.txt     [92m[ok] - 1.000[0m
+2021-11-27 16:17:43,304 - INFO - tsp ./tests/rat195.txt   [92m[ok] - 1.000[0m
+2021-11-27 16:17:44,016 - INFO - tsp ./tests/rat575.txt   [93m[ok] - 0.899[0m
+2021-11-27 16:17:44,028 - INFO - tsp ./tests/rat783.txt   [95m[ok] - 0.780[0m
+2021-11-27 16:17:44,055 - INFO - tsp ./tests/rat99.txt    [92m[ok] - 1.000[0m
+2021-11-27 16:17:45,373 - INFO - tsp ./tests/rd100.txt    [92m[ok] - 1.000[0m
+2021-11-27 16:17:46,088 - INFO - tsp ./tests/rd400.txt    [93m[ok] - 0.992[0m
+2021-11-27 16:17:46,159 - INFO - tsp ./tests/rl1304.txt   [95m[ok] - 0.766[0m
+2021-11-27 16:17:46,159 - INFO - tsp ./tests/xql662.txt   [93m[ok] - 0.903[0m
+2021-11-27 16:17:47,458 - INFO - tsp ./tests/zi929.txt    [93m[ok] - 0.848[0m
+2021-11-27 16:17:47,462 - INFO - 
+Tests passed (score):
+
+    ----------------
+    41/41 (46.68/50)
+    ----------------
+2021-11-27 23:31:22,236 - INFO - Testing tsp.cpp
+2021-11-27 23:31:22,237 - DEBUG - Compiling tsp.cpp...
+2021-11-27 23:31:30,685 - INFO - tsp ./tests/19_rnd_0.txt [92m[ok] - 1.000[0m
+2021-11-27 23:31:30,736 - INFO - tsp ./tests/19_rnd_1.txt [92m[ok] - 1.000[0m
+2021-11-27 23:31:30,737 - INFO - tsp ./tests/19_rnd_2.txt [92m[ok] - 1.000[0m
+2021-11-27 23:31:30,737 - INFO - tsp ./tests/bcl380.txt   [92m[ok] - 1.000[0m
+2021-11-27 23:31:32,463 - INFO - tsp ./tests/berlin52.txt [92m[ok] - 1.000[0m
+2021-11-27 23:31:33,349 - INFO - tsp ./tests/bier127.txt  [92m[ok] - 1.000[0m
+2021-11-27 23:31:33,399 - INFO - tsp ./tests/ch130.txt    [92m[ok] - 1.000[0m
+2021-11-27 23:31:33,400 - INFO - tsp ./tests/ch150.txt    [92m[ok] - 1.000[0m
+2021-11-27 23:31:36,827 - INFO - tsp ./tests/d1291.txt    [95m[ok] - 0.751[0m
+2021-11-27 23:31:38,197 - INFO - tsp ./tests/d198.txt     [92m[ok] - 1.000[0m
+2021-11-27 23:31:38,293 - INFO - tsp ./tests/d493.txt     [93m[ok] - 0.872[0m
+2021-11-27 23:31:38,354 - INFO - tsp ./tests/d657.txt     [93m[ok] - 0.936[0m
+2021-11-27 23:31:40,937 - INFO - tsp ./tests/dsj1000.txt  [93m[ok] - 0.801[0m
+2021-11-27 23:31:41,566 - INFO - tsp ./tests/eil101.txt   [92m[ok] - 1.000[0m
+2021-11-27 23:31:41,614 - INFO - tsp ./tests/eil51.txt    [92m[ok] - 1.000[0m
+2021-11-27 23:31:41,667 - INFO - tsp ./tests/eil76.txt    [92m[ok] - 1.000[0m
+2021-11-27 23:31:43,469 - INFO - tsp ./tests/fl417.txt    [93m[ok] - 0.985[0m
+2021-11-27 23:31:44,586 - INFO - tsp ./tests/lin105.txt   [92m[ok] - 1.000[0m
+2021-11-27 23:31:44,744 - INFO - tsp ./tests/lin318.txt   [93m[ok] - 0.945[0m
+2021-11-27 23:31:44,865 - INFO - tsp ./tests/lu980.txt    [93m[ok] - 0.835[0m
+2021-11-27 23:31:46,915 - INFO - tsp ./tests/pcb1173.txt  [95m[ok] - 0.663[0m
+2021-11-27 23:31:47,466 - INFO - tsp ./tests/pcb442.txt   [93m[ok] - 0.942[0m
+2021-11-27 23:31:47,558 - INFO - tsp ./tests/pr107.txt    [92m[ok] - 1.000[0m
+2021-11-27 23:31:47,634 - INFO - tsp ./tests/pr124.txt    [92m[ok] - 1.000[0m
+2021-11-27 23:31:49,882 - INFO - tsp ./tests/pr136.txt    [92m[ok] - 1.000[0m
+2021-11-27 23:31:51,241 - INFO - tsp ./tests/pr144.txt    [92m[ok] - 1.000[0m
+2021-11-27 23:31:51,286 - INFO - tsp ./tests/pr152.txt    [93m[ok] - 0.957[0m
+2021-11-27 23:31:51,418 - INFO - tsp ./tests/pr226.txt    [92m[ok] - 1.000[0m
+2021-11-27 23:31:53,818 - INFO - tsp ./tests/pr264.txt    [92m[ok] - 1.000[0m
+2021-11-27 23:31:54,528 - INFO - tsp ./tests/pr299.txt    [93m[ok] - 0.971[0m
+2021-11-27 23:31:54,528 - INFO - tsp ./tests/pr439.txt    [95m[ok] - 0.686[0m
+2021-11-27 23:31:54,529 - INFO - tsp ./tests/pr76.txt     [92m[ok] - 1.000[0m
+2021-11-27 23:31:57,397 - INFO - tsp ./tests/rat195.txt   [92m[ok] - 1.000[0m
+2021-11-27 23:31:57,951 - INFO - tsp ./tests/rat575.txt   [93m[ok] - 0.856[0m
+2021-11-27 23:31:58,134 - INFO - tsp ./tests/rat783.txt   [95m[ok] - 0.796[0m
+2021-11-27 23:31:58,157 - INFO - tsp ./tests/rat99.txt    [92m[ok] - 1.000[0m
+2021-11-27 23:32:00,219 - INFO - tsp ./tests/rd100.txt    [92m[ok] - 1.000[0m
+2021-11-27 23:32:00,620 - INFO - tsp ./tests/rd400.txt    [93m[ok] - 0.870[0m
+2021-11-27 23:32:00,822 - INFO - tsp ./tests/rl1304.txt   [95m[ok] - 0.679[0m
+2021-11-27 23:32:00,870 - INFO - tsp ./tests/xql662.txt   [93m[ok] - 0.944[0m
+2021-11-27 23:32:02,464 - INFO - tsp ./tests/zi929.txt    [93m[ok] - 0.831[0m
+2021-11-27 23:32:02,468 - INFO - 
+Tests passed (score):
+
+    ----------------
+    41/41 (46.73/50)
+    ----------------
