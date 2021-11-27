@@ -28,7 +28,7 @@ typedef pair<uint_fast32_t, uint_fast16_t> ii;
 typedef vector<ii> vii;
 
 #define EMPTY_SET 0
-#define MAX_N 1500
+#define MAX_N 1350
 #define DP_LIMIT 19
 #define TIME_LIMIT_THRESHOLD 1.995
 
