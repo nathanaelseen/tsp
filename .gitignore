@@ -2,4 +2,8 @@
 *.o
 a.out
 *.swp
+<<<<<<< HEAD
 score.log
+=======
+*.log
+>>>>>>> 26cc2306e65e331a4922be8b492c86e1c98a568e
