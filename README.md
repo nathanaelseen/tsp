@@ -55,9 +55,26 @@ On average, you would receive a score of around 47.5/50, which is consistently s
 ![Scoring Script](images/scoring-script.png)
 
 <details>
-<summary>👨‍💻 <b>Scoring Other Problems</b>: </summary>
+<summary>👨‍💻 <b>Scoring Other Problems</b> </summary>
 
 On a side note, if you have another problem you want to score in a similar manner, you can easily adapt the scoring script to support it by implementing a `ProblemChecker` class for your problem (see the `TSPChecker` class for an example).
+
+</details>
+
+
+
+<details>
+<summary>🤖 <b>Automating Submissions</b> </summary>
+
+Due to the randomness involved in ILS, submitting the same code twice will likely give you two slightly different scores. A few submissions will be very lucky and a few submissions will be very unlucky. However, for this problem, only the highest score of your submissions is recorded and not the average. As such, it makes sense to make multiple submisions. We advise that you install [kattis-cli] and set it up such that it can be run from anywhere.
+
+Then set up a [cron] job that submits the file. The command for the cronjob may look like this (adapt to your own path):
+
+```bash
+* 6,12,18,24 * * * cd /full/path/to/tsp && kattis tsp.cpp -f
+```
+
+If you choose to do this, please do not set up your system to e.g. submit every two minutes but be considerate with Kattis' limited server capability.
 
 </details>
 
@@ -65,19 +82,21 @@ On a side note, if you have another problem you want to score in a similar manne
 ## Contributions
 
 * [TSPLib] for interesting test cases as well as University of Waterloo ([VSLI] and [national city]).
-* @[estan] for inspiration from his [TSP repo][estan-tsp].
-* @[Lookuz] for inspiration from his [TSP repo][lookuz-tsp].
+* [@estan] for inspiration from his [TSP repo][estan-tsp].
+* [@Lookuz] for inspiration from his [TSP repo][lookuz-tsp].
 
 
 [2-opt]: https://en.wikipedia.org/wiki/2-opt
 [3-opt]: https://en.wikipedia.org/wiki/3-opt
 [TSPLib]: http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/
 [kattis-tsp]: https://open.kattis.com/problems/tsp
+[kattis-cli]: https://github.com/Kattis/kattis-cli
+[cron]: https://help.ubuntu.com/community/CronHowto
 [Christofides algorithm]: https://en.wikipedia.org/wiki/Christofides_algorithm
 [VSLI]: https://www.math.uwaterloo.ca/tsp/vlsi/index.html
 [national city]: https://www.math.uwaterloo.ca/tsp/world/countries.html
 [estan-tsp]: https://github.com/estan/tsp
 [lookuz-tsp]: https://github.com/Lookuz/CS4234-Stochastic-Local-Search-Methods/tree/master/TSP
 [steven]: https://www.comp.nus.edu.sg/~stevenha/cs4234.html
-[estan]: https://github.com/estan
-[Lookuz]: https://github.com/Lookuz
+[@estan]: https://github.com/estan
+[@Lookuz]: https://github.com/Lookuz
